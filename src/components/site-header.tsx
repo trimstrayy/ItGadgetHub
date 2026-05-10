@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useRouterState, useNavigate } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingBag, Search, Menu, X, ChevronDown, Cpu, Laptop, Headphones, Smartphone, Sparkles } from "lucide-react";
 import { CATEGORIES } from "@/data/products";
@@ -15,6 +15,8 @@ export function SiteHeader() {
   const { count, open } = useCart();
   const c = count();
   const path = useRouterState({ select: (r) => r.location.pathname });
+  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -55,11 +57,22 @@ export function SiteHeader() {
 
           <div className="flex-1" />
 
-          <Link to="/shop" className="hidden md:flex items-center gap-2 glass rounded-xl px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition w-64">
-            <Search className="h-4 w-4" />
-            <span>Search gadgets…</span>
-            <kbd className="ml-auto text-[10px] px-1.5 py-0.5 rounded bg-white/5 border border-white/10">⌘K</kbd>
-          </Link>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              navigate({ to: "/shop", search: { q: query } as any });
+            }}
+            className="hidden md:flex items-center gap-2 glass rounded-xl px-3 py-2 text-sm w-64 focus-within:border-foreground/40 transition"
+          >
+            <Search className="h-4 w-4 text-muted-foreground" />
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search gadgets…"
+              className="bg-transparent outline-none flex-1 placeholder:text-muted-foreground text-foreground"
+              aria-label="Search products"
+            />
+          </form>
 
           <button onClick={open} className="relative h-10 w-10 grid place-items-center glass rounded-xl hover:border-primary/50 transition" aria-label="Cart">
             <ShoppingBag className="h-4 w-4" />

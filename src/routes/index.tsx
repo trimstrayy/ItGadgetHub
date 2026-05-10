@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Shield, Truck, Headphones, MapPin, Cpu, Zap, Award } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
+import HeroGallery from "@/components/hero-gallery";
 import { CATEGORIES, PRODUCTS } from "@/data/products";
 import { ProductCard } from "@/components/product-card";
 
@@ -57,27 +58,8 @@ function HomePage() {
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.15 }}
-            className="relative"
-          >
-            <div className="absolute -inset-10 bg-gradient-to-r from-primary/30 to-accent/30 blur-3xl rounded-full" />
-            <div className="relative glass-strong rounded-3xl overflow-hidden border-white/10">
-              <img src={heroImg} alt="Premium gaming laptop with neon glow" width={1920} height={1080} className="w-full h-auto" />
-              <div className="absolute bottom-4 left-4 right-4 glass-strong rounded-xl p-3 flex items-center gap-3">
-                <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary to-accent grid place-items-center"><Zap className="h-4 w-4 text-primary-foreground" /></div>
-                <div className="flex-1">
-                  <div className="text-xs text-muted-foreground">Editor's Pick</div>
-                  <div className="text-sm font-semibold">ROG Strix G16 · RTX 4070</div>
-                </div>
-                <Link to="/product/$slug" params={{ slug: "rog-strix-g16" }} className="text-xs px-3 py-1.5 rounded-lg bg-primary text-primary-foreground">View</Link>
-              </div>
-            </div>
-            <motion.div animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 4 }}
-              className="absolute -top-4 -right-4 glass-strong rounded-2xl p-3 flex items-center gap-2 hidden sm:flex">
-              <Sparkles className="h-4 w-4 text-accent" />
-              <span className="text-xs font-semibold">100% Genuine</span>
-            </motion.div>
+          <motion.div initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.15 }} className="relative">
+            <HeroGallery />
           </motion.div>
         </div>
 
