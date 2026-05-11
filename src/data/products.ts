@@ -3,7 +3,7 @@ export type Product = {
   slug: string;
   name: string;
   brand: string;
-  category: "laptops" | "components" | "accessories" | "mobile";
+  category: "laptops" | "components" | "accessories" | "mobile" | "repair";
   subcategory: string;
   price: number;
   oldPrice?: number;
@@ -119,15 +119,56 @@ export const PRODUCTS: Product[] = [
     description: "Gemini AI built-in. The smartest Pixel ever.",
     inStock: true,
   },
+  {
+    id: "13", slug: "iphone-15-cover", name: "iPhone 15 Silicone Case", brand: "Apple",
+    category: "accessories", subcategory: "Phone Cover", price: 4500,
+    image: accImg, rating: 4.5, reviews: 150,
+    specs: {},
+    description: "A delightful way to protect your iPhone.",
+    inStock: true,
+  },
+  {
+    id: "14", slug: "samsung-45w-charger", name: "Samsung 45W USB-C Charger", brand: "Samsung",
+    category: "accessories", subcategory: "Charger", price: 3500,
+    image: accImg, rating: 4.7, reviews: 200,
+    specs: {},
+    description: "Super Fast Charging to get you back to 100% quickly.",
+    inStock: true,
+  },
+  {
+    id: "15", slug: "redmi-note-13", name: "Xiaomi Redmi Note 13", brand: "Xiaomi",
+    category: "mobile", subcategory: "Affordable Phone", price: 25000,
+    image: mobImg, rating: 4.6, reviews: 300,
+    specs: { processor: "Snapdragon 685", storage: "128GB", display: "6.67\" AMOLED", ram: "6GB" },
+    description: "Vivid 120Hz AMOLED display and a 108MP main camera.",
+    inStock: true,
+  },
+  {
+    id: "16", slug: "cat6-lan-cable-10m", name: "Cat 6 Ethernet Cable (10m)", brand: "Generic",
+    category: "accessories", subcategory: "LAN Cable", price: 800,
+    image: accImg, rating: 4.8, reviews: 500,
+    specs: {},
+    description: "High-speed and reliable internet connectivity for your home or office.",
+    inStock: true,
+  },
+  {
+    id: "17", slug: "amazon-echo-dot-5", name: "Amazon Echo Dot (5th Gen)", brand: "Amazon",
+    category: "accessories", subcategory: "Smart Speaker", price: 6500,
+    image: accImg, rating: 4.7, reviews: 1200,
+    specs: {},
+    description: "Our most popular smart speaker with Alexa.",
+    inStock: true,
+  },
 ];
 
 export const CATEGORIES = [
   { slug: "laptops", name: "Laptops", desc: "Gaming · Ultrabook · Workstation", image: laptopImg, sub: ["Gaming", "Ultrabook", "Workstation", "Business"] },
   { slug: "components", name: "PC Components", desc: "GPU · CPU · Storage · RAM", image: compImg, sub: ["GPU", "CPU", "Storage", "RAM", "Motherboard", "Cooling"] },
-  { slug: "accessories", name: "Accessories", desc: "Keyboards · Audio · Mice", image: accImg, sub: ["Keyboard", "Mouse", "Headphones", "Monitor", "Webcam"] },
-  { slug: "mobile", name: "Mobile", desc: "Smartphones · Tablets · Wearables", image: mobImg, sub: ["Smartphone", "Tablet", "Wearable"] },
+  { slug: "accessories", name: "Accessories", desc: "Keyboards · Audio · Mice", image: accImg, sub: ["Keyboard", "Mouse", "Headphones", "Monitor", "Webcam", "Phone Cover", "Charger", "LAN Cable", "Smart Speaker"] },
+  { slug: "mobile", name: "Mobile", desc: "Smartphones · Tablets · Wearables", image: mobImg, sub: ["Smartphone", "Tablet", "Wearable", "Affordable Phone"] },
+  { slug: "repair", name: "Repair Services", desc: "Expert repairs for your gadgets", image: accImg, sub: [] },
 ] as const;
 
 export const formatNPR = (n: number) => `Rs ${n.toLocaleString("en-IN")}`;
-export const WHATSAPP_NUMBER = "9779800000000";
+export const WHATSAPP_NUMBER = "9779741740551";
 export const waLink = (msg: string) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;

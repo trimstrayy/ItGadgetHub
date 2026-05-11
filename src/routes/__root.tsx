@@ -108,6 +108,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
       </head>
       <body className="dark">
         {children}
+        <PopupAd />
         <Scripts />
       </body>
     </html>
@@ -127,3 +128,4 @@ function RootComponent() {
 }
 
 import { SiteShell } from "@/components/site-shell";
+import { PopupAd } from "@/components/popup-ad";

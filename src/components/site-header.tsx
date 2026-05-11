@@ -6,7 +6,7 @@ import { CATEGORIES } from "@/data/products";
 import { useCart } from "@/lib/cart-store";
 import { cn } from "@/lib/utils";
 
-const catIcons: Record<string, any> = { laptops: Laptop, components: Cpu, accessories: Headphones, mobile: Smartphone };
+const catIcons: Record<string, any> = { laptops: Laptop, components: Cpu, accessories: Headphones, mobile: Smartphone, repair: Sparkles };
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -53,6 +53,8 @@ export function SiteHeader() {
             <Link to="/shop" className={cn("px-3 py-2 rounded-lg text-sm hover:bg-white/5", path === "/shop" && "text-primary")}>Shop</Link>
             <Link to="/about" className={cn("px-3 py-2 rounded-lg text-sm hover:bg-white/5", path === "/about" && "text-primary")}>About</Link>
             <Link to="/contact" className={cn("px-3 py-2 rounded-lg text-sm hover:bg-white/5", path === "/contact" && "text-primary")}>Contact</Link>
+            <Link to="/emi" className={cn("px-3 py-2 rounded-lg text-sm hover:bg-white/5", path === "/emi" && "text-primary")}>EMI</Link>
+            <Link to="/repair" className={cn("px-3 py-2 rounded-lg text-sm hover:bg-white/5", path === "/repair" && "text-primary")}>Repair</Link>
           </nav>
 
           <div className="flex-1" />
@@ -136,7 +138,7 @@ export function SiteHeader() {
               <button onClick={() => setMobileOpen(false)} className="h-10 w-10 glass rounded-xl grid place-items-center"><X className="h-4 w-4" /></button>
             </div>
             <nav className="px-6 flex flex-col gap-1">
-              {[{ to: "/", l: "Home" }, { to: "/shop", l: "Shop" }, { to: "/about", l: "About" }, { to: "/contact", l: "Contact" }].map((i) => (
+              {[{ to: "/", l: "Home" }, { to: "/shop", l: "Shop" }, { to: "/about", l: "About" }, { to: "/contact", l: "Contact" }, { to: "/repair", l: "Repair" }].map((i) => (
                 <Link key={i.to} to={i.to} className="py-3 text-2xl font-display font-semibold border-b border-white/5">{i.l}</Link>
               ))}
               <div className="mt-6 text-xs uppercase tracking-widest text-muted-foreground">Categories</div>

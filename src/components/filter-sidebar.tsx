@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SlidersHorizontal, X } from "lucide-react";
+import { CATEGORIES } from "@/data/products";
 
 export type Filters = {
   brands: string[];
+  categories: string[];
   priceMax: number;
   ram: string[];
   processor: string[];
   storage: string[];
 };
 
-export const DEFAULT_FILTERS: Filters = { brands: [], priceMax: 500000, ram: [], processor: [], storage: [] };
+export const DEFAULT_FILTERS: Filters = { brands: [], categories: [], priceMax: 500000, ram: [], processor: [], storage: [] };
 
 const BRANDS = ["ASUS", "Apple", "NVIDIA", "AMD", "Logitech", "Keychron", "Samsung", "Sony", "Lenovo", "Google"];
 const RAMS = ["8GB", "16GB", "32GB", "64GB"];
@@ -33,6 +35,12 @@ function FilterBody({ filters, set }: { filters: Filters; set: (f: Filters) => v
   };
   return (
     <div className="space-y-6">
+      <div>
+        <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Category</div>
+        <div className="flex flex-wrap gap-2">
+          {CATEGORIES.map((c) => <Toggle key={c.slug} label={c.name} on={filters.categories.includes(c.slug)} onClick={() => tog("categories", c.slug)} />)}
+        </div>
+      </div>
       <div>
         <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Brand</div>
         <div className="flex flex-wrap gap-2">
